@@ -1,0 +1,25 @@
+{
+  "channel_handle": "@coodwithyogesh",
+  "timezone": "Asia/Kolkata",
+  "shorts": {
+    "enabled": true,
+    "target_duration_seconds": 45,
+    "aspect_ratio": "9:16"
+  },
+  "long_videos": {
+    "enabled": true,
+    "target_duration_minutes": 6,
+    "aspect_ratio": "16:9"
+  },
+  "publishing": {
+    "enabled": false,
+    "default_privacy": "private",
+    "require_approval": true,
+    "prevent_duplicates": true
+  },
+  "safety": {
+    "minimum_video_bytes": 100000,
+    "require_audio": true,
+    "require_video": true
+  }
+}
