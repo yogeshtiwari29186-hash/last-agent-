@@ -5,7 +5,6 @@ import argparse
 import html
 import json
 import os
-import statistics
 import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -235,9 +234,9 @@ def _write_reports(output_dir: Path, report: dict[str, Any]) -> None:
     document = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
 <title>YouTube SEO Audit</title><style>
-body{font:16px system-ui;max-width:1200px;margin:2rem auto;padding:0 1rem;color:#172033}
-.status{padding:.8rem;border:1px solid #bbb;border-radius:8px}table{width:100%;border-collapse:collapse}
-th,td{text-align:left;border-bottom:1px solid #ddd;padding:.6rem;vertical-align:top}
+body{{font:16px system-ui;max-width:1200px;margin:2rem auto;padding:0 1rem;color:#172033}}
+.status{{padding:.8rem;border:1px solid #bbb;border-radius:8px}}table{{width:100%;border-collapse:collapse}}
+th,td{{text-align:left;border-bottom:1px solid #ddd;padding:.6rem;vertical-align:top}}
 </style></head><body><h1>YouTube SEO Audit</h1>
 <p class="status"><b>Status:</b> {status}</p><p><b>Channel:</b> {channel}</p>
 <p><b>Period:</b> {start} to {end}</p><p><b>Videos checked:</b> {count} · <b>Findings:</b> {findings_count}</p>
@@ -264,7 +263,7 @@ def main() -> int:
     report = run_audit(Path(args.output_dir))
     print(f"Audit status: {report['status']}")
     print(f"Report files: {args.output_dir}/audit.json, {args.output_dir}/audit.html")
-    if report["status"] in {"FAILED_AUTH", "FAILED_API"}:
+    if report["status"] in {"BLOCKED_AUTH", "FAILED_AUTH", "FAILED_API"}:
         return 1
     return 0
 
