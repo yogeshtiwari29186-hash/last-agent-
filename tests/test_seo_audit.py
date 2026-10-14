@@ -42,6 +42,10 @@ class AuditMetadataTests(unittest.TestCase):
             self.assertTrue((Path(temp) / "audit.html").exists())
             saved = json.loads((Path(temp) / "audit.json").read_text(encoding="utf-8"))
             self.assertEqual(saved["status"], "BLOCKED_AUTH")
+            html_report = (Path(temp) / "audit.html").read_text(encoding="utf-8")
+            self.assertIn("<title>YouTube SEO Audit</title>", html_report)
+            self.assertIn("BLOCKED_AUTH", html_report)
+            self.assertIn("body{font:16px system-ui", html_report)
 
 
 if __name__ == "__main__":
