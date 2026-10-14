@@ -69,7 +69,10 @@ def _credentials_from_env():
         token_uri="https://oauth2.googleapis.com/token",
         client_id=client_id,
         client_secret=client_secret,
-        scopes=["https://www.googleapis.com/auth/youtube.readonly"],
+        scopes=[
+            "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly",
+        ],
     )
     credentials.refresh(Request())
     return credentials
