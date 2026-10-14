@@ -8,8 +8,8 @@ This workflow is a read-only starting implementation. It runs unit tests, then a
 2. Enable **YouTube Data API v3** and **YouTube Analytics API**.
 3. Configure the OAuth consent screen for the intended account and testing/production status as appropriate.
 4. Create an OAuth 2.0 Client ID of type **Desktop app** for the one-time local authorization flow.
-5. Use the scope `https://www.googleapis.com/auth/youtube.readonly`. Analytics API report queries require authorized access to the channel's data.
-6. Complete a one-time OAuth authorization for the Google account that owns/manages the channel and obtain a refresh token. Do not paste the token into chat or commit it to Git.
+5. Authorize **both** scopes: `https://www.googleapis.com/auth/youtube.readonly` and `https://www.googleapis.com/auth/yt-analytics.readonly`. The first reads channel/video metadata; the second authorizes YouTube Analytics report queries.
+6. Complete a fresh OAuth authorization for the Google account that owns/manages the channel and obtain a refresh token with both scopes granted. If you already generated a token using only the first scope, repeat consent and replace `YOUTUBE_REFRESH_TOKEN`; changing code alone cannot add permission to an existing token. Do not paste the token into chat or commit it to Git.
 
 The refresh token must be generated for the same OAuth client ID/secret used in the workflow. If the OAuth consent screen is in Testing, refresh-token lifetime/availability can be limited for external apps; check Google's current OAuth policy before relying on long-running schedules.
 
