@@ -1,6 +1,13 @@
 name: YouTube SEO Audit
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/seo_audit.py'
+      - 'tests/**'
+      - '.github/workflows/youtube-seo-audit.yml'
+      - 'requirements.txt'
   schedule:
     - cron: "0 12 * * *" # Daily at 12:00 UTC / 17:30 IST
   workflow_dispatch:
